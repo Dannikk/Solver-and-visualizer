@@ -3,7 +3,13 @@ from PyQt5.QtWidgets import QPushButton, QPlainTextEdit, QLabel, QTextEdit
 from typing import Any
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 import numpy as np
+import sympy
+from sympy.parsing.sympy_parser import (parse_expr, standard_transformations, implicit_multiplication_application,
+                                        convert_xor)
+from scipy.optimize import minimize as min
 from itertools import combinations
+import math
+import matplotlib.pyplot as plt
 
 
 @dataclass
@@ -25,32 +31,32 @@ class Solution:
     start: np.ndarray
 
 
-def all_pairs(lst):
-    n = len(lst) // 4
-    grps = (lst[i:i + n] for i in range(0, len(lst), n))
-    cmb = combinations(grps, 2)
-    for a,b in cmb:
-        yield ((a.pop(),b.pop()))
-
-
 if __name__ == '__main__':
-    names = list(range(11))
+    def func(x, y):
+        return x**2 + y**2
 
-    it = iter(names)
-    print(names)
-    names = [str(first_name) + " " + str(second_name) for first_name, second_name in zip(it, it)]
-    print(names)
-    lst = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    it = iter(lst)
-    a = it.__next__()
-    b = it.__next__()
-    while True:
-        print(a, b)
-        try:
-            a, b = b, it.__next__()
-        except StopIteration:
-            break
-    it = iter(lst)
-    it2 = iter(lst)
-    for a, b in zip(it, it2):
-        print(a, b)
+    x, y = np.mgrid[-10: 10:100j,
+                    -10: 10:100j]
+    # levels = np.array([range(1, 10)])
+    z = func(x, y)
+    print(type(z))
+    print(type(x))
+    cs = plt.contour(x, y, z, levels=[1, 4, 9])
+    plt.clabel(cs)
+    plt.grid()
+    plt.show()
+    #
+    # xx = np.array([1, 2, 3])
+    # x = sympy.Symbol('x')
+    # y = sympy.Symbol('y')
+    # variables = [x, y]
+    # func = 'x^2+y^2'
+    # f = parse_expr(func, transformations=(standard_transformations + (implicit_multiplication_application,) +
+    #                                       (convert_xor,)))
+    # x_, y_ = np.mgrid[-10: 10:100j,
+    #                 -10: 10:100j]
+    # z = f.subs([(x, x_), (y, y_)])
+    # print('grsgs')
+    # print()
+    x = np.array([range(1, 12)])
+    print(x.sort())

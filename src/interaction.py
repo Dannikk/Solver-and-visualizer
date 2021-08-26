@@ -8,6 +8,9 @@ from src.solver import solver
 import random
 
 
+ANSWER_FORMAT = '.4e'
+
+
 class Interaction:
     def __init__(self, ui_elements: UIelements):
         self.ui_elements = ui_elements
@@ -39,14 +42,14 @@ class Interaction:
             self.show_message('Error', e, level=QtWidgets.QMessageBox.Critical)
             return None
 
-        res, points = solver(start=np.array([2, 2]), function=self.function, gradient=self.gradient, eps=0.001)
+        res, points, values = solver(start=np.array([2, 11]), function=self.function, gradient=self.gradient, eps=0.001)
         self.solved = True
         print(points)
         print()
-        self.ui_elements.result_field.setText(f'Answer: {res[0]}, {res[1]}')
-        self.plot_solution(points)
+        self.ui_elements.result_field.setText(f'Answer: {res[0]:{ANSWER_FORMAT}}, {res[1]:{ANSWER_FORMAT}}')
+        self.plot_solution(points, values=values)
 
-    def plot_solution(self, data: np.ndarray = None):
+    def plot_solution(self, data: np.ndarray = None, values: np.ndarray = None):
         # instead of ax.hold(False)
         self.ui_elements.figure.clear()
 
@@ -63,6 +66,19 @@ class Interaction:
                 width = np.linalg.norm(size) / 600
                 ax.arrow(data[i][0], data[i][1], size[0], size[1], facecolor='b', edgecolor='black', linewidth=1,
                          width=width, length_includes_head=True)
+            x_extrems = (min(data[0:steps, 0]), max(data[0:steps, 0]))
+            y_extrems = (min(data[0:steps, 1]), max(data[0:steps, 1]))
+            x_, y_ = np.mgrid[x_extrems[0]:x_extrems[1]:100j,
+                            y_extrems[0]:y_extrems[1]:100j]
+            sh = x_.shape
+            xr = np.ravel(x_)
+            yr = np.ravel(y_)
+            ps = np.vstack([xr, yr]).transpose()
+            vect = np.vectorize(self.function, signature='(2)->()')
+            z = vect(ps)
+            z = z.reshape(sh)
+
+            ax.contour(x_, y_, z, levels=list(sorted(values)))
             # refresh canvas
             self.ui_elements.canvas.draw()
         except Exception as e:

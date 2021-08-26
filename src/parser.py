@@ -37,6 +37,7 @@ def get_pretty_func(func: Union[Any, List[Any]], variables: list):
             else:
                 return float(get_sub_value(func, point, variables))
         except Exception as e:
+            print('pizdaaaa')
             raise e
     return inner_func
 

@@ -36,14 +36,16 @@ def solver(start: np.ndarray, function: Any, gradient: Any, eps: float) -> (np.n
     x = start
     step_count = 0
     points = []
+    values = []
     while True:
         grad = gradient(x)
         # print(f"grad: {grad}, {type(grad)}")
         # print(f"grad: {grad[0]}, {type(grad[0])}")
         points.append(x)
+        values.append(function(x))
         if norm(grad) < eps:
             print("Количество шагов: ", step_count)
-            return x, np.array(points)
+            return x, np.array(points), np.array(values)
         alpha = golden_solver(lambda al: function(x - al * grad))
         x = x - alpha * grad
         print(f'step: {step_count}')
