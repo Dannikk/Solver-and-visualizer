@@ -3,17 +3,13 @@ from PyQt5.QtWidgets import QPushButton, QPlainTextEdit, QLabel, QTextEdit, QCom
 from typing import Any
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 import numpy as np
-import sympy
-from sympy.parsing.sympy_parser import (parse_expr, standard_transformations, implicit_multiplication_application,
-                                        convert_xor)
-from scipy.optimize import minimize as min
-from itertools import combinations
-import math
-import matplotlib.pyplot as plt
 from enum import Enum
-from sympy.functions.elementary.complexes import re
-from sympy.parsing.sympy_parser import (parse_expr, standard_transformations, implicit_multiplication_application,
-                                        convert_xor)
+# import sympy
+# from sympy.parsing.sympy_parser import (parse_expr, standard_transformations, implicit_multiplication_application,
+#                                         convert_xor)
+# from itertools import combinations
+# from sympy.parsing.sympy_parser import (parse_expr, standard_transformations, implicit_multiplication_application,
+#                                         convert_xor)
 
 
 @dataclass
@@ -48,47 +44,47 @@ class ErrorCode(Enum):
     UK_ERROR = 'Unknown error has occurred'
 
 
-if __name__ == '__main__':
-    # def func(x, y):
-    #     return x**2 + y**2
-    #
-    # x, y = np.mgrid[-10: 10:100j,
-    #                 -10: 10:100j]
-    # # levels = np.array([range(1, 10)])
-    # z = func(x, y)
-    # print(type(z))
-    # print(type(x))
-    # cs = plt.contour(x, y, z, levels=[1, 4, 9])
-    # plt.clabel(cs)
-    # plt.grid()
-    # plt.show()
-    #
-    # xx = np.array([1, 2, 3])
-    # x = sympy.Symbol('x')
-    # y = sympy.Symbol('y')
-    # variables = [x, y]
-    # func = 'x^2+y^2'
-    # f = parse_expr(func, transformations=(standard_transformations + (implicit_multiplication_application,) +
-    #                                       (convert_xor,)))
-    # x_, y_ = np.mgrid[-10: 10:100j,
-    #                 -10: 10:100j]
-    # z = f.subs([(x, x_), (y, y_)])
-    # print('grsgs')
-    # print()
-    # x_ = sympy.Symbol('x')
-    # strf = 'x**4'
-    # f = parse_expr(strf, transformations=(standard_transformations + (implicit_multiplication_application,) +
-    #                                      (convert_xor,)))
-    # try:
-    #     x = np.float32(10)
-    #     while True:
-    #        # p = f(x)
-    #        p = f.subs(x_, x)
-    #        print(type(p), p, p < np.inf)
-    #        x +=p
-    # except RuntimeWarning as e:
-    #     print(e, type(e))
-    string = "x^2+yI^2"
-    f = parse_expr(string, evaluate=False, transformations=(standard_transformations + (implicit_multiplication_application,) +
-                                            (convert_xor,)))
-    print(f)
+# if __name__ == '__main__':
+#     # def func(x, y):
+#     #     return x**2 + y**2
+#     #
+#     # x, y = np.mgrid[-10: 10:100j,
+#     #                 -10: 10:100j]
+#     # # levels = np.array([range(1, 10)])
+#     # z = func(x, y)
+#     # print(type(z))
+#     # print(type(x))
+#     # cs = plt.contour(x, y, z, levels=[1, 4, 9])
+#     # plt.clabel(cs)
+#     # plt.grid()
+#     # plt.show()
+#     #
+#     # xx = np.array([1, 2, 3])
+#     # x = sympy.Symbol('x')
+#     # y = sympy.Symbol('y')
+#     # variables = [x, y]
+#     # func = 'x^2+y^2'
+#     # f = parse_expr(func, transformations=(standard_transformations + (implicit_multiplication_application,) +
+#     #                                       (convert_xor,)))
+#     # x_, y_ = np.mgrid[-10: 10:100j,
+#     #                 -10: 10:100j]
+#     # z = f.subs([(x, x_), (y, y_)])
+#     # print('grsgs')
+#     # print()
+#     # x_ = sympy.Symbol('x')
+#     # strf = 'x**4'
+#     # f = parse_expr(strf, transformations=(standard_transformations + (implicit_multiplication_application,) +
+#     #                                      (convert_xor,)))
+#     # try:
+#     #     x = np.float32(10)
+#     #     while True:
+#     #        # p = f(x)
+#     #        p = f.subs(x_, x)
+#     #        print(type(p), p, p < np.inf)
+#     #        x +=p
+#     # except RuntimeWarning as e:
+#     #     print(e, type(e))
+#     string = "x^2+yI^2"
+#     f = parse_expr(string, evaluate=False, transformations=(standard_transformations + (implicit_multiplication_application,) +
+#                                             (convert_xor,)))
+#     print(f)
