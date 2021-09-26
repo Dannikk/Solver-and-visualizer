@@ -51,5 +51,3 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-    - name: Mypy Check
-      uses: jpetrucciani/mypy-check@0.910
