@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QVBoxLayout, QSizePolicy
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
-import matplotlib.pyplot as plt # type: ignore
+import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from src.interaction import Interaction
 from src.utils import UIelements
