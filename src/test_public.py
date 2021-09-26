@@ -1,4 +1,4 @@
-from src.ui import Window
+from .ui import Window
 from typing import List
 from PyQt5 import QtCore
 
