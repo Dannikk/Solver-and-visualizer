@@ -1,0 +1,7 @@
+flake8
+pytest
+pytest-qt
+PyQt5
+sympy
+matplotlib
+numpy
