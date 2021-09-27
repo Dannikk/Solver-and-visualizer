@@ -24,3 +24,5 @@ python main.py
 ```
 
 Here you can see example of application work
+
+![example_picture](https://i.ibb.co/xY8Qc7F/s-v-app.jpg)
