@@ -26,3 +26,8 @@ python main.py
 Here you can see example of application work
 
 ![example_picture](https://i.ibb.co/xY8Qc7F/s-v-app.jpg)
+
+## Contacts:
+
+* Email: danilov.na@edu.spbstu.ru
+* Telegram: [@dannik0103](https://t.me/dannik0103)
