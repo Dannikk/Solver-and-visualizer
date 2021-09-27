@@ -57,7 +57,6 @@ def golden_solver(func: Callable, left: float = 0, right: float = 1, epsilon=10*
 
 def solver(start: np.ndarray, function: Callable, gradient: Callable, eps: float) \
         -> Tuple[ErrorCode, float, np.ndarray, np.ndarray]:
-        # -> Union[Tuple[float, np.ndarray, np.ndarray], Exception]:
     """
 
     Parameters
